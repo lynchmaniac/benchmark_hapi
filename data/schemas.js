@@ -9,6 +9,9 @@ var artiste =
       id: Joi.any()
     }).meta({className: 'artiste'});
 
+var artistes =
+    Joi.array().items(artiste).meta({className: 'artiste'});
+
 var error =
     Joi.object().keys({
       statusCode: Joi.number().integer().required(),
@@ -39,7 +42,7 @@ var paginate = function (item, name) {
 exports = module.exports = {
   //models
   artiste: artiste,
-  artistes: paginate(artiste, 'artistes'),
+  artistes: artistes,
   error: error,
   validationError: validationError
 };

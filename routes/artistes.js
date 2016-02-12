@@ -12,12 +12,10 @@ routes = [
     handler: function (req, reply) {
       
     var db = global.db;
-    var query = db.userlist.chain();
-    console.log(query);
     var collection = db.get('userlist');
-
-
-     collection.find({},{},function(err, docs) {
+    collection.find({},{},function(err, docs) {
+      console.log(docs);
+      console.log(err);
        reply(docs);
     });
 
@@ -35,7 +33,7 @@ routes = [
       response: {
         schema: schemas.error,
         status: {
-          200: schemas.artiste,
+          200: schemas.artistes,
           400: schemas.validationError
         }
       }
